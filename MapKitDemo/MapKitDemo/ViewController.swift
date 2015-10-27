@@ -28,11 +28,30 @@ class ViewController: UIViewController {
     }
 
     
-    let regionRadius: CLLocationDistance = 1000
+    let regionRadius: CLLocationDistance = 10000
     func centerMapOnLocation(location: CLLocation) {
         let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate,
             regionRadius * 2.0, regionRadius * 2.0)
         mapView.setRegion(coordinateRegion, animated: true)
+    }
+    
+    // MARK: - location manager to authorize user location for Maps app
+    var locationManager = CLLocationManager()
+    func checkLocationAuthorizationStatus() {
+        if #available(iOS 8.0, *) {
+            if CLLocationManager.authorizationStatus() == .AuthorizedWhenInUse {
+                mapView.showsUserLocation = true
+            } else {
+                locationManager.requestWhenInUseAuthorization()
+            }
+        } else {
+            // Fallback on earlier versions
+        }
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        checkLocationAuthorizationStatus()
     }
 
 }
