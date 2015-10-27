@@ -22,23 +22,22 @@
                                 <rect key="frame" x="0.0" y="70" width="600" height="530"/>
                                 <animations/>
                             </mapView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="H5K-VT-XE0">
-                                <rect key="frame" x="20" y="20" width="560" height="30"/>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="ELd-bc-bgI">
+                                <rect key="frame" x="20" y="14" width="560" height="44"/>
                                 <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
-                            </textField>
+                            </searchBar>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="H5K-VT-XE0" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Cgl-Os-HvH"/>
-                            <constraint firstItem="dX2-ep-vMZ" firstAttribute="top" secondItem="H5K-VT-XE0" secondAttribute="bottom" constant="20" id="LvM-U0-cDz"/>
-                            <constraint firstItem="H5K-VT-XE0" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="Ox4-Jk-SaY"/>
+                            <constraint firstItem="dX2-ep-vMZ" firstAttribute="top" secondItem="ELd-bc-bgI" secondAttribute="bottom" constant="12" id="K9m-4L-qP6"/>
+                            <constraint firstItem="ELd-bc-bgI" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="14" id="P0F-hD-Tcz"/>
+                            <constraint firstItem="ELd-bc-bgI" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="Pbr-1t-DIb"/>
+                            <constraint firstItem="ELd-bc-bgI" firstAttribute="centerX" secondItem="dX2-ep-vMZ" secondAttribute="centerX" id="S41-vR-aCB"/>
+                            <constraint firstItem="ELd-bc-bgI" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="iFs-v7-Suc"/>
                             <constraint firstItem="dX2-ep-vMZ" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="s8S-Ep-fPi"/>
-                            <constraint firstItem="H5K-VT-XE0" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="ycl-GJ-kaW"/>
                             <constraint firstItem="dX2-ep-vMZ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="zeP-y6-xbW"/>
-                            <constraint firstItem="H5K-VT-XE0" firstAttribute="centerX" secondItem="dX2-ep-vMZ" secondAttribute="centerX" id="zgr-HT-wYH"/>
                         </constraints>
                     </view>
                     <connections>
