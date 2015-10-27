@@ -8,18 +8,20 @@
 
 import UIKit
 import MapKit
-
+import CoreLocation
 
 class ViewController: UIViewController {
 
     @IBOutlet weak var mapView: MKMapView!
     
+    var locationManager = CLLocationManager()
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        let initialLocation = CLLocation(latitude: 51.7504642, longitude: -1.282693)
+        
+        checkLocationAuthorizationStatus()
     
-        centerMapOnLocation(initialLocation)
     }
 
     override func didReceiveMemoryWarning() {
@@ -36,11 +38,17 @@ class ViewController: UIViewController {
     }
     
     // MARK: - location manager to authorize user location for Maps app
-    var locationManager = CLLocationManager()
     func checkLocationAuthorizationStatus() {
         if #available(iOS 8.0, *) {
             if CLLocationManager.authorizationStatus() == .AuthorizedWhenInUse {
                 mapView.showsUserLocation = true
+                
+                let location = locationManager.location
+                let camera = MKMapCamera()
+                camera.centerCoordinate = location!.coordinate
+                mapView.setCamera(camera, animated: true)
+
+                
             } else {
                 locationManager.requestWhenInUseAuthorization()
             }
@@ -51,7 +59,6 @@ class ViewController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        checkLocationAuthorizationStatus()
     }
 
 }
