@@ -63,3 +63,30 @@ class ViewController: UIViewController {
 
 }
 
+extension ViewController: UISearchBarDelegate {
+    
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        
+        let request = MKLocalSearchRequest();
+        request.naturalLanguageQuery = searchBar.text
+        request.region = self.mapView.region;
+        
+        let search = MKLocalSearch(request: request);
+    
+        search.startWithCompletionHandler { (searchResponse: MKLocalSearchResponse?, error: NSError?) -> Void in
+            var annotations = [MKAnnotation]()
+            for item: MKMapItem in (searchResponse?.mapItems)! {
+                let annotation = MKPointAnnotation();
+                annotation.coordinate = item.placemark.coordinate;
+                annotation.title = item.name;
+                annotations.append(annotation)
+            }
+            
+            self.mapView.showAnnotations(annotations, animated: true)
+        }
+    }
+}
+
+
+
